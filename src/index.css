@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: theme("colors.bg");
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    background-image: radial-gradient(circle at 15% 0%, rgba(51, 224, 138, 0.07), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(51, 224, 138, 0.05), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(51, 224, 138, 0.28);
+    color: theme("colors.ink");
+  }
+}
+
+@layer components {
+  /* Reusable buttons */
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-transparent px-[18px] py-3
+      font-mono text-[13.5px] font-semibold transition-all duration-150 ease-out;
+  }
+  .btn-primary {
+    @apply bg-green text-[#05130c] hover:-translate-y-px hover:shadow-glow-lg
+      disabled:opacity-45 disabled:translate-y-0 disabled:shadow-none disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-ink border-border hover:border-green-soft hover:text-green;
+  }
+  .btn-block {
+    @apply w-full justify-center mt-1.5;
+  }
+
+  /* Panels used across About / Contact ("windowed" terminal cards) */
+  .panel {
+    @apply overflow-hidden rounded-xl border border-border bg-bg-elev;
+  }
+  .panel-bar {
+    @apply flex items-center gap-2 border-b border-border bg-surface px-4 py-[11px]
+      font-mono text-[12.5px] text-dim;
+  }
+  .panel-dot {
+    @apply h-[7px] w-[7px] rounded-full bg-green-soft;
+  }
+
+  .pill {
+    @apply rounded-md border border-border-soft bg-surface px-2.5 py-[5px]
+      font-mono text-xs text-dim;
+  }
+
+  .tag {
+    @apply rounded-full border border-green-soft px-2 py-[3px] font-mono text-[11.5px] text-green;
+  }
+
+  .field-input {
+    @apply rounded-[7px] border border-border bg-bg px-3 py-2.5 font-sans text-sm text-ink
+      outline-none transition-colors duration-150 placeholder:text-faint
+      focus:border-green focus:shadow-glow;
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green;
+  }
+}
