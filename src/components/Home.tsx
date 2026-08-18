@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Download, ArrowUpRight } from "lucide-react";
 import { PROFILE } from "../data/content";
 import type { SectionId } from "../types";
+import { downloadResume } from "../utils/downloadResume";
 
 interface HomeProps {
   onNav: (id: SectionId) => void;
@@ -61,13 +62,15 @@ export default function Home({ onNav }: HomeProps) {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a
+            <button
               className="btn btn-primary"
-              href={PROFILE.resumeUrl}
-              download={PROFILE.resumeFileName}
+              type="button"
+              onClick={() =>
+                downloadResume(PROFILE.resumeUrl, PROFILE.resumeFileName)
+              }
             >
               <Download size={16} /> Download Résumé
-            </a>
+            </button>
             <button className="btn btn-ghost" onClick={() => onNav("contact")}>
               Get in touch <ArrowUpRight size={16} />
             </button>

@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { SKILL_GROUPS, EXPERIENCE, EDUCATION, PROFILE } from "../data/content";
 import type { ExperienceItem } from "../types";
+import { downloadResume } from "../utils/downloadResume";
 
 function ExperienceRow({
   item,
@@ -144,13 +145,15 @@ export default function About() {
       </div>
 
       <div className="mt-8 flex justify-center">
-        <a
+        <button
           className="btn btn-ghost"
-          href={PROFILE.resumeUrl}
-          download={PROFILE.resumeFileName}
+          type="button"
+          onClick={() =>
+            downloadResume(PROFILE.resumeUrl, PROFILE.resumeFileName)
+          }
         >
           <Download size={16} /> Download full résumé (PDF)
-        </a>
+        </button>
       </div>
     </section>
   );
